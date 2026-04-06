@@ -9,11 +9,12 @@ export default function Index() {
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-white/10 backdrop-blur-md border-b border-white/20">
         <div className="font-black text-2xl text-white drop-shadow" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          💧 АКВА<span className="text-yellow-300">ПАРК</span>
+          💧 <span className="text-yellow-300">ГородОК</span>
         </div>
         <div className="hidden md:flex gap-8 text-white font-semibold text-sm drop-shadow">
           <a href="#about" className="hover:text-yellow-300 transition-colors">Об аквапарке</a>
           <a href="#tickets" className="hover:text-yellow-300 transition-colors">Билеты</a>
+          <a href="#contacts" className="hover:text-yellow-300 transition-colors">Контакты</a>
         </div>
         <button className="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-5 py-2 rounded-full text-sm transition-all hover:scale-105 shadow-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           Купить билет
@@ -214,6 +215,58 @@ export default function Index() {
         </svg>
       </section>
 
+      {/* CONTACTS */}
+      <section id="contacts" className="py-24 px-6 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-blue-500 font-semibold text-sm uppercase tracking-widest" style={{ fontFamily: "'Montserrat', sans-serif" }}>Как нас найти</span>
+            <h2 className="font-black text-4xl md:text-5xl text-blue-900 mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Контакты
+            </h2>
+            <div className="w-16 h-1.5 bg-yellow-400 rounded-full mx-auto mt-5" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            <div className="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Icon name="MapPin" size={28} className="text-blue-600" />
+              </div>
+              <h3 className="font-bold text-blue-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Адрес</h3>
+              <p className="text-gray-600 leading-relaxed">г. Владивосток<br />ул. Ватутина, 4б</p>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Icon name="Clock" size={28} className="text-yellow-600" />
+              </div>
+              <h3 className="font-bold text-blue-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Режим работы</h3>
+              <p className="text-gray-600 leading-relaxed">Каждый день<br />с 9:00 до 21:00</p>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-cyan-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Icon name="Phone" size={28} className="text-cyan-600" />
+              </div>
+              <h3 className="font-bold text-blue-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Телефон</h3>
+              <p className="text-gray-600 leading-relaxed">Уточняйте<br />по месту</p>
+            </div>
+          </div>
+
+          {/* Карта */}
+          <div className="rounded-3xl overflow-hidden shadow-xl">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?ll=131.900&spn=0.02,0.02&l=map&pt=131.9,43.104,pm2blm~131.900,43.104,pm2blm&text=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D0%BA%2C+%D1%83%D0%BB.+%D0%92%D0%B0%D1%82%D1%83%D1%82%D0%B8%D0%BD%D0%B0+4%D0%B1&z=16"
+              width="100%"
+              height="360"
+              frameBorder="0"
+              allowFullScreen
+              title="Карта аквапарка ГородОК"
+              style={{ border: 0 }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 px-6 bg-white text-center">
         <div className="max-w-2xl mx-auto">
@@ -242,12 +295,14 @@ export default function Index() {
         style={{ background: "linear-gradient(135deg, #03045e, #0077b6)" }}
       >
         <div className="font-black text-2xl text-white mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          💧 АКВА<span className="text-yellow-300">ПАРК</span>
+          💧 <span className="text-yellow-300">ГородОК</span>
         </div>
-        <p className="text-blue-300 text-sm">Работаем каждый день · с 9:00 до 21:00</p>
+        <p className="text-blue-300 text-sm mt-1">Аквапарк · г. Владивосток, ул. Ватутина, 4б</p>
+        <p className="text-blue-400 text-sm mt-1">Работаем каждый день · с 9:00 до 21:00</p>
         <div className="mt-6 flex justify-center gap-6 text-blue-400 text-sm">
           <a href="#about" className="hover:text-white transition-colors">Об аквапарке</a>
           <a href="#tickets" className="hover:text-white transition-colors">Билеты</a>
+          <a href="#contacts" className="hover:text-white transition-colors">Контакты</a>
         </div>
       </footer>
     </div>
