@@ -27,6 +27,8 @@ export default function Index() {
         <div className="hidden md:flex gap-8 text-white font-semibold text-sm drop-shadow">
           <a href="#about" className="hover:text-yellow-300 transition-colors">Об аквапарке</a>
           <a href="#saunas" className="hover:text-yellow-300 transition-colors">Парилки</a>
+          <a href="#private-saunas" className="hover:text-yellow-300 transition-colors">Сауны</a>
+          <a href="#trainer" className="hover:text-yellow-300 transition-colors">Тренер</a>
           <a href="#tickets" className="hover:text-yellow-300 transition-colors">Билеты</a>
           <a href="#contacts" className="hover:text-yellow-300 transition-colors">Контакты</a>
           <a href="#feedback" className="hover:text-yellow-300 transition-colors">Связаться</a>
@@ -219,6 +221,146 @@ export default function Index() {
                     <span key={t} className="bg-amber-100 text-amber-800 text-xs font-medium px-3 py-1 rounded-full">{t}</span>
                   ))}
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRIVATE SAUNAS */}
+      <section id="private-saunas" className="py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-purple-500 font-semibold text-sm uppercase tracking-widest" style={{ fontFamily: "'Montserrat', sans-serif" }}>Для особых случаев</span>
+            <h2 className="font-black text-4xl md:text-5xl text-gray-900 mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Тематические сауны
+            </h2>
+            <div className="w-16 h-1.5 bg-purple-400 rounded-full mx-auto mt-5" />
+            <p className="text-gray-500 mt-4 max-w-lg mx-auto">3 индивидуальные сауны — идеальное место для тематических дней рождения и праздников в кругу близких</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-14">
+            {/* Пиратская */}
+            <div className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/4b961ccf-ce27-4698-a34a-d2faeaf5112d.jpg)` }} />
+              <div className="p-7">
+                <div className="text-4xl mb-3">🏴‍☠️</div>
+                <h3 className="font-black text-xl text-gray-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Пиратская</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-4">Деревянный декор, морская атмосфера и настоящий пиратский дух. Детский праздник, который запомнится навсегда!</p>
+                <div className="flex flex-wrap gap-2">
+                  {["🎉 День рождения", "👦 Для детей", "🌊 Морская тема"].map((t) => (
+                    <span key={t} className="bg-amber-100 text-amber-800 text-xs font-medium px-3 py-1 rounded-full">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Японская */}
+            <div className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+              <div className="h-48 bg-cover bg-center bg-[center_40%]" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/4b961ccf-ce27-4698-a34a-d2faeaf5112d.jpg)` }} />
+              <div className="p-7">
+                <div className="text-4xl mb-3">⛩️</div>
+                <h3 className="font-black text-xl text-gray-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Японская</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-4">Бамбук, камень и минимализм. Атмосфера японской бани офуро — гармония и умиротворение для взрослых.</p>
+                <div className="flex flex-wrap gap-2">
+                  {["🎉 День рождения", "🧘 Медитация", "🎋 Восточный стиль"].map((t) => (
+                    <span key={t} className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Золотая Азия */}
+            <div className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+              <div className="h-48 bg-cover bg-center bg-[center_70%]" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/4b961ccf-ce27-4698-a34a-d2faeaf5112d.jpg)` }} />
+              <div className="p-7">
+                <div className="text-4xl mb-3">🏮</div>
+                <h3 className="font-black text-xl text-gray-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Золотая Азия</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-4">Роскошный декор в золотых тонах, восточные мотивы и атмосфера праздника. Для торжеств, которые хочется запомнить.</p>
+                <div className="flex flex-wrap gap-2">
+                  {["🎉 День рождения", "✨ Роскошь", "🥂 Торжество"].map((t) => (
+                    <span key={t} className="bg-yellow-100 text-yellow-800 text-xs font-medium px-3 py-1 rounded-full">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-600 to-pink-500 rounded-3xl p-8 md:p-10 text-center text-white shadow-2xl">
+            <div className="text-4xl mb-4">🎂</div>
+            <h3 className="font-black text-2xl md:text-3xl mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Отпразднуйте день рождения незабываемо!</h3>
+            <p className="text-white/80 text-lg mb-6">Забронируйте тематическую сауну для своего праздника — мы сделаем всё, чтобы было весело</p>
+            <a
+              href="tel:+79147926364"
+              className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full text-lg hover:scale-105 transition-transform shadow-lg"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Забронировать: 8 (914) 792-63-64
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* TRAINER */}
+      <section id="trainer" className="py-24 px-6 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-blue-500 font-semibold text-sm uppercase tracking-widest" style={{ fontFamily: "'Montserrat', sans-serif" }}>Профессиональное обучение</span>
+            <h2 className="font-black text-4xl md:text-5xl text-blue-900 mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Обучение плаванию
+            </h2>
+            <div className="w-16 h-1.5 bg-yellow-400 rounded-full mx-auto mt-5" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-3xl overflow-hidden shadow-2xl" style={{ height: 420 }}>
+              <img
+                src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/c3bd307a-122c-4d91-9283-d8ccafe7c621.jpg"
+                alt="Тренер по плаванию"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="space-y-8">
+              <div>
+                <h3 className="font-black text-2xl text-blue-900 mb-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  Профессиональный тренер
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  В нашем комплексе работает опытный тренер по плаванию. Занятия проводятся
+                  индивидуально и в группах — для детей и взрослых, с любым уровнем подготовки.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4">
+                {[
+                  { icon: "👶", title: "Дети с 3 лет", desc: "Обучение с нуля, безопасно и весело" },
+                  { icon: "🧑", title: "Взрослые", desc: "Научим плавать в любом возрасте" },
+                  { icon: "🌊", title: "Аквааэробика", desc: "Групповые занятия для здоровья и фигуры" },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-md">
+                    <div className="text-3xl">{item.icon}</div>
+                    <div>
+                      <div className="font-bold text-blue-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.title}</div>
+                      <div className="text-gray-500 text-sm mt-1">{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-md border border-blue-100">
+                <div className="text-sm text-gray-500 mb-2 font-medium">Записаться к тренеру</div>
+                <a
+                  href="tel:+79244296477"
+                  className="flex items-center gap-3 text-blue-700 hover:text-blue-500 transition-colors"
+                >
+                  <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <Icon name="Phone" size={18} className="text-blue-600" />
+                  </div>
+                  <span className="font-black text-xl" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    8 (924) 429-64-77
+                  </span>
+                </a>
               </div>
             </div>
           </div>
