@@ -26,6 +26,7 @@ export default function Index() {
         </div>
         <div className="hidden md:flex gap-8 text-white font-semibold text-sm drop-shadow">
           <a href="#about" className="hover:text-yellow-300 transition-colors">Об аквапарке</a>
+          <a href="#saunas" className="hover:text-yellow-300 transition-colors">Парилки</a>
           <a href="#tickets" className="hover:text-yellow-300 transition-colors">Билеты</a>
           <a href="#contacts" className="hover:text-yellow-300 transition-colors">Контакты</a>
           <a href="#feedback" className="hover:text-yellow-300 transition-colors">Связаться</a>
@@ -143,11 +144,81 @@ export default function Index() {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                {["🏊 Бассейны", "🌊 Горки", "🎉 Аттракционы", "🍦 Кафе", "🅿️ Парковка"].map((tag) => (
+                {["🏊 Бассейны", "🌊 Горки", "🎉 Аттракционы", "🍦 Кафе", "🧖 Парилки", "🅿️ Парковка"].map((tag) => (
                   <span key={tag} className="bg-blue-100 text-blue-800 font-medium px-4 py-2 rounded-full text-sm">
                     {tag}
                   </span>
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SAUNAS */}
+      <section id="saunas" className="py-24 px-6 bg-gradient-to-br from-orange-50 to-amber-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-orange-500 font-semibold text-sm uppercase tracking-widest" style={{ fontFamily: "'Montserrat', sans-serif" }}>Омолаживающие процедуры</span>
+            <h2 className="font-black text-4xl md:text-5xl text-orange-900 mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              3 парилки на дровах
+            </h2>
+            <div className="w-16 h-1.5 bg-orange-400 rounded-full mx-auto mt-5" />
+            <p className="text-gray-500 mt-4 max-w-lg mx-auto">Настоящий жар, природные ароматы и полное расслабление для тела и души</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Леший */}
+            <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:-translate-y-1 hover:scale-[1.01] transform duration-300">
+              <div className="h-3 bg-gradient-to-r from-green-600 to-emerald-500" />
+              <div className="p-8">
+                <div className="text-5xl mb-5">🌲</div>
+                <h3 className="font-black text-2xl text-gray-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Леший</h3>
+                <p className="text-gray-500 leading-relaxed mb-6">
+                  Русская баня на дровах с берёзовыми вениками и хвойным ароматом.
+                  Жар до 90°C, пар лёгкий и чистый — как в настоящем лесу.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["🔥 До 90°C", "🌿 Берёзовый веник", "🌲 Хвойный аромат"].map((t) => (
+                    <span key={t} className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Хамам */}
+            <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:-translate-y-1 hover:scale-[1.01] transform duration-300">
+              <div className="h-3 bg-gradient-to-r from-blue-500 to-cyan-400" />
+              <div className="p-8">
+                <div className="text-5xl mb-5">🫧</div>
+                <h3 className="font-black text-2xl text-gray-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Хамам</h3>
+                <p className="text-gray-500 leading-relaxed mb-6">
+                  Турецкая баня с влажным паром и мраморным теплом. Мягко очищает кожу,
+                  снимает усталость и дарит ощущение невесомости.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["💧 Влажный пар", "🪨 Мраморный прогрев", "✨ Очищение кожи"].map((t) => (
+                    <span key={t} className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Соляная */}
+            <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:-translate-y-1 hover:scale-[1.01] transform duration-300">
+              <div className="h-3 bg-gradient-to-r from-amber-400 to-yellow-400" />
+              <div className="p-8">
+                <div className="text-5xl mb-5">🧂</div>
+                <h3 className="font-black text-2xl text-gray-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Соляная</h3>
+                <p className="text-gray-500 leading-relaxed mb-6">
+                  Парилка с гималайской солью. Насыщает воздух минералами,
+                  укрепляет иммунитет и оздоравливает органы дыхания.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["🧘 Дыхание", "💛 Минералы", "🛡️ Иммунитет"].map((t) => (
+                    <span key={t} className="bg-amber-100 text-amber-800 text-xs font-medium px-3 py-1 rounded-full">{t}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
