@@ -172,7 +172,7 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Леший */}
             <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:-translate-y-1 hover:scale-[1.01] transform duration-300">
-              <div className="h-3 bg-gradient-to-r from-green-600 to-emerald-500" />
+              <img src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a37cf560-2025-44f9-941b-d00f19dfc78a.jpg" alt="Банный комплекс Леший" className="w-full h-52 object-cover object-top" />
               <div className="p-8">
                 <div className="text-5xl mb-5">🌲</div>
                 <h3 className="font-black text-2xl text-gray-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Леший</h3>
@@ -223,6 +223,15 @@ export default function Index() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Ледяная купель баннер */}
+          <div className="mt-14 rounded-3xl overflow-hidden shadow-2xl relative">
+            <img
+              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/7e84753a-54b1-42da-9cdb-b80f9c4118bd.jpg"
+              alt="Ледяная купель Городок"
+              className="w-full h-72 md:h-96 object-cover object-center"
+            />
           </div>
         </div>
       </section>
@@ -312,37 +321,38 @@ export default function Index() {
             <div className="w-16 h-1.5 bg-yellow-400 rounded-full mx-auto mt-5" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-3xl overflow-hidden shadow-2xl" style={{ height: 420 }}>
+          {/* Фото команды + описание */}
+          <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
+            <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/c3bd307a-122c-4d91-9283-d8ccafe7c621.jpg"
-                alt="Тренер по плаванию"
+                src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/f5511695-e2eb-42fc-a933-6d3b01262330.jpg"
+                alt="Команда аквапарка ГородОК"
                 className="w-full h-full object-cover"
               />
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div>
-                <h3 className="font-black text-2xl text-blue-900 mb-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  Профессиональный тренер
+                <h3 className="font-black text-2xl text-blue-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  Светлана Вячеславовна
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  В нашем комплексе работает опытный тренер по плаванию. Занятия проводятся
-                  индивидуально и в группах — для детей и взрослых, с любым уровнем подготовки.
+                  Профессиональный тренер по плаванию. Занятия для детей и взрослых —
+                  индивидуально и в группах, с любым уровнем подготовки.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-3">
                 {[
                   { icon: "👶", title: "Дети с 3 лет", desc: "Обучение с нуля, безопасно и весело" },
                   { icon: "🧑", title: "Взрослые", desc: "Научим плавать в любом возрасте" },
                   { icon: "🌊", title: "Аквааэробика", desc: "Групповые занятия для здоровья и фигуры" },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-md">
+                  <div key={item.title} className="flex items-start gap-4 bg-white rounded-2xl p-4 shadow-md">
                     <div className="text-3xl">{item.icon}</div>
                     <div>
                       <div className="font-bold text-blue-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.title}</div>
-                      <div className="text-gray-500 text-sm mt-1">{item.desc}</div>
+                      <div className="text-gray-500 text-sm mt-0.5">{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -363,6 +373,16 @@ export default function Index() {
                 </a>
               </div>
             </div>
+          </div>
+
+          {/* Расписание */}
+          <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/d7949dcf-367f-4f57-a416-02bb4df6d7de.jpg"
+              alt="Расписание занятий"
+              className="w-full object-contain bg-[#d4eef5]"
+              style={{ maxHeight: 600 }}
+            />
           </div>
         </div>
       </section>
