@@ -64,7 +64,7 @@ export default function Index() {
 
         <div className="relative z-10 px-6 max-w-4xl">
           <div className="inline-block bg-yellow-400 text-blue-900 font-bold text-sm px-4 py-1 rounded-full mb-6 shadow-md" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            🌞 Открыто каждый день
+            🌞 Работаем круглосуточно · Дети до 22:00
           </div>
           <h1
             className="font-black text-white leading-tight mb-6"
@@ -129,7 +129,7 @@ export default function Index() {
                 {[
                   { icon: "Waves", label: "Водных горок", value: "4" },
                   { icon: "Users", label: "Гостей в год", value: "50 000+" },
-                  { icon: "Clock", label: "Работаем", value: "с 9:00" },
+                  { icon: "Clock", label: "Работаем", value: "24/7" },
                   { icon: "Star", label: "Рейтинг гостей", value: "4.9 ★" },
                 ].map((item) => (
                   <div
@@ -467,7 +467,7 @@ export default function Index() {
                 <Icon name="Clock" size={28} className="text-yellow-600" />
               </div>
               <h3 className="font-bold text-blue-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Режим работы</h3>
-              <p className="text-gray-600 leading-relaxed">Каждый день<br />с 9:00 до 21:00</p>
+              <p className="text-gray-600 leading-relaxed">Круглосуточно<br /><span className="text-blue-500 font-medium">Дети — до 22:00</span></p>
             </div>
 
             <div className="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
