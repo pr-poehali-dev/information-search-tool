@@ -1,9 +1,22 @@
+import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const HERO_IMAGE =
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/99779861-cb5a-485a-b430-cc84ec62681b.jpg";
 
 export default function Index() {
+  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    await new Promise((r) => setTimeout(r, 800));
+    setLoading(false);
+    setSent(true);
+  };
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden" style={{ fontFamily: "'Rubik', sans-serif" }}>
       {/* NAV */}
@@ -15,6 +28,7 @@ export default function Index() {
           <a href="#about" className="hover:text-yellow-300 transition-colors">Об аквапарке</a>
           <a href="#tickets" className="hover:text-yellow-300 transition-colors">Билеты</a>
           <a href="#contacts" className="hover:text-yellow-300 transition-colors">Контакты</a>
+          <a href="#feedback" className="hover:text-yellow-300 transition-colors">Связаться</a>
         </div>
         <button className="bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-5 py-2 rounded-full text-sm transition-all hover:scale-105 shadow-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           Купить билет
@@ -263,6 +277,89 @@ export default function Index() {
               title="Карта аквапарка ГородОК"
               style={{ border: 0 }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* FEEDBACK FORM */}
+      <section id="feedback" className="py-24 px-6 bg-white">
+        <div className="max-w-xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-blue-500 font-semibold text-sm uppercase tracking-widest" style={{ fontFamily: "'Montserrat', sans-serif" }}>Свяжитесь с нами</span>
+            <h2 className="font-black text-4xl text-blue-900 mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Обратная связь
+            </h2>
+            <div className="w-16 h-1.5 bg-yellow-400 rounded-full mx-auto mt-5" />
+            <p className="text-gray-500 mt-4">Ответим в течение дня</p>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 shadow-lg border border-blue-100">
+            {sent ? (
+              <div className="text-center py-8">
+                <div className="text-6xl mb-4">🎉</div>
+                <h3 className="font-black text-2xl text-blue-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Сообщение отправлено!</h3>
+                <p className="text-gray-500">Мы свяжемся с вами в ближайшее время.</p>
+                <button
+                  className="mt-6 text-blue-600 font-semibold underline text-sm"
+                  onClick={() => { setSent(false); setForm({ name: "", phone: "", message: "" }); }}
+                >
+                  Отправить ещё
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <label className="block text-sm font-semibold text-blue-900 mb-2">Ваше имя *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Иван Иванов"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full px-4 py-3 rounded-2xl border border-blue-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800 placeholder-gray-400 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-blue-900 mb-2">Номер телефона *</label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+7 (___) ___-__-__"
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    className="w-full px-4 py-3 rounded-2xl border border-blue-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800 placeholder-gray-400 transition"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-blue-900 mb-2">Сообщение</label>
+                  <textarea
+                    rows={4}
+                    placeholder="Ваш вопрос или пожелание..."
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="w-full px-4 py-3 rounded-2xl border border-blue-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800 placeholder-gray-400 transition resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-4 rounded-2xl text-white font-bold text-lg transition-all hover:scale-105 disabled:opacity-70 disabled:scale-100 shadow-lg flex items-center justify-center gap-2"
+                  style={{ fontFamily: "'Montserrat', sans-serif", background: "linear-gradient(135deg, #0077b6, #00b4d8)" }}
+                >
+                  {loading ? (
+                    <>
+                      <Icon name="Loader2" size={20} className="animate-spin" />
+                      Отправляю...
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="Send" size={20} />
+                      Отправить
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
