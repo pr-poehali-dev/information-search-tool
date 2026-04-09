@@ -124,7 +124,7 @@ export default function Index() {
 
               <div className="grid grid-cols-2 gap-5">
                 {[
-                  { icon: "Waves", label: "Горок и бассейнов", value: "15+" },
+                  { icon: "Waves", label: "Водных горок", value: "4" },
                   { icon: "Users", label: "Гостей в год", value: "50 000+" },
                   { icon: "Clock", label: "Работаем", value: "с 9:00" },
                   { icon: "Star", label: "Рейтинг гостей", value: "4.9 ★" },
@@ -262,7 +262,9 @@ export default function Index() {
                 <Icon name="Phone" size={28} className="text-cyan-600" />
               </div>
               <h3 className="font-bold text-blue-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Телефон</h3>
-              <p className="text-gray-600 leading-relaxed">Уточняйте<br />по месту</p>
+              <a href="tel:+79147926364" className="text-blue-600 font-semibold text-lg hover:text-blue-500 transition-colors leading-relaxed block">
+                8 (914) 792-63-64
+              </a>
             </div>
           </div>
 
