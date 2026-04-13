@@ -33,6 +33,7 @@ export default function Index() {
           <a href="#private-saunas" className="hover:text-yellow-300 transition-colors">Сауны</a>
           <a href="#trainer" className="hover:text-yellow-300 transition-colors">Тренер</a>
           <a href="#schedule" className="hover:text-yellow-300 transition-colors">Расписание</a>
+          <a href="#massage" className="hover:text-yellow-300 transition-colors">Массаж</a>
           <a href="#tickets" className="hover:text-yellow-300 transition-colors">Билеты</a>
           <a href="#contacts" className="hover:text-yellow-300 transition-colors">Контакты</a>
           <a href="#feedback" className="hover:text-yellow-300 transition-colors">Связаться</a>
@@ -430,6 +431,67 @@ export default function Index() {
                 <div className="text-sm text-gray-500 mb-1">Записаться к Светлане Вячеславовне</div>
                 <a href="tel:+79244296477" className="font-black text-lg text-blue-700 hover:text-blue-500 transition-colors" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                   8 (924) 429-64-77
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MASSAGE */}
+      <section id="massage" className="py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-rose-400 font-semibold text-sm uppercase tracking-widest" style={{ fontFamily: "'Montserrat', sans-serif" }}>Расслабление и восстановление</span>
+            <h2 className="font-black text-4xl md:text-5xl text-gray-900 mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Вьетнамский массаж
+            </h2>
+            <div className="w-16 h-1.5 bg-rose-400 rounded-full mx-auto mt-5" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/a16c523e-cf5a-4e52-a57b-347b7bbc05a6.jpg"
+                alt="Вьетнамский массаж горячими камнями"
+                className="w-full h-full object-cover"
+                style={{ maxHeight: 480 }}
+              />
+            </div>
+
+            <div className="space-y-6">
+              <p className="text-gray-600 text-lg leading-relaxed">
+                У нас работают профессиональные вьетнамские мастера — настоящие эксперты своего дела. Массаж горячими камнями снимает напряжение, улучшает кровообращение и дарит глубокое расслабление после водных процедур.
+              </p>
+
+              <div className="grid grid-cols-1 gap-3">
+                {[
+                  { icon: "🪨", title: "Горячие камни", desc: "Базальтовые камни прогревают мышцы и снимают зажимы" },
+                  { icon: "🌿", title: "Натуральные масла", desc: "Ароматические масла для кожи и полного расслабления" },
+                  { icon: "🇻🇳", title: "Вьетнамские мастера", desc: "Опытные специалисты с традиционными техниками массажа" },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4 bg-rose-50 rounded-2xl p-4 border border-rose-100">
+                    <div className="text-3xl">{item.icon}</div>
+                    <div>
+                      <div className="font-bold text-gray-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.title}</div>
+                      <div className="text-gray-500 text-sm mt-0.5">{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-rose-50 rounded-2xl p-6 border border-rose-100">
+                <div className="text-sm text-gray-500 mb-2 font-medium">Записаться на массаж</div>
+                <a
+                  href="tel:+79147926364"
+                  className="flex items-center gap-3 text-rose-600 hover:text-rose-500 transition-colors"
+                >
+                  <div className="w-10 h-10 bg-rose-100 rounded-xl flex items-center justify-center">
+                    <Icon name="Phone" size={18} className="text-rose-500" />
+                  </div>
+                  <span className="font-black text-xl" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    8 (914) 792-63-64
+                  </span>
                 </a>
               </div>
             </div>
