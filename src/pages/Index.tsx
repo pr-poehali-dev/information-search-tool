@@ -6,6 +6,7 @@ const HERO_IMAGE =
 
 export default function Index() {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [agreed, setAgreed] = useState(false);
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
@@ -624,9 +625,28 @@ export default function Index() {
                     className="w-full px-4 py-3 rounded-2xl border border-blue-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800 placeholder-gray-400 transition resize-none"
                   />
                 </div>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    className="mt-0.5 w-5 h-5 accent-blue-600 rounded cursor-pointer flex-shrink-0"
+                  />
+                  <span className="text-sm text-gray-500 leading-relaxed">
+                    Я согласен(а) с{" "}
+                    <button type="button" onClick={() => setShowPersonal(true)} className="text-blue-600 underline hover:text-blue-500 transition-colors">
+                      обработкой персональных данных
+                    </button>{" "}
+                    и{" "}
+                    <button type="button" onClick={() => setShowPrivacy(true)} className="text-blue-600 underline hover:text-blue-500 transition-colors">
+                      политикой конфиденциальности
+                    </button>
+                  </span>
+                </label>
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={loading || !agreed}
                   className="w-full py-4 rounded-2xl text-white font-bold text-lg transition-all hover:scale-105 disabled:opacity-70 disabled:scale-100 shadow-lg flex items-center justify-center gap-2"
                   style={{ fontFamily: "'Montserrat', sans-serif", background: "linear-gradient(135deg, #0077b6, #00b4d8)" }}
                 >
