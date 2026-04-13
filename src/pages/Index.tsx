@@ -8,6 +8,8 @@ export default function Index() {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showPersonal, setShowPersonal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -678,12 +680,62 @@ export default function Index() {
         </div>
         <p className="text-blue-300 text-sm mt-1">Аквапарк · г. Владивосток, ул. Ватутина, 4б</p>
         <p className="text-blue-400 text-sm mt-1">Работаем каждый день · с 9:00 до 21:00</p>
-        <div className="mt-6 flex justify-center gap-6 text-blue-400 text-sm">
+        <div className="mt-6 flex justify-center gap-6 text-blue-400 text-sm flex-wrap">
           <a href="#about" className="hover:text-white transition-colors">Об аквапарке</a>
           <a href="#tickets" className="hover:text-white transition-colors">Билеты</a>
           <a href="#contacts" className="hover:text-white transition-colors">Контакты</a>
         </div>
+        <div className="mt-4 flex justify-center gap-6 text-blue-500 text-xs flex-wrap">
+          <button onClick={() => setShowPrivacy(true)} className="hover:text-white transition-colors underline underline-offset-2">
+            Политика конфиденциальности
+          </button>
+          <button onClick={() => setShowPersonal(true)} className="hover:text-white transition-colors underline underline-offset-2">
+            Обработка персональных данных
+          </button>
+        </div>
+        <p className="text-blue-600 text-xs mt-4">© 2024 Аквапарк ГородОК. Все права защищены.</p>
       </footer>
+
+      {/* MODAL: Политика конфиденциальности */}
+      {showPrivacy && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4" onClick={() => setShowPrivacy(false)}>
+          <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setShowPrivacy(false)} className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 transition-colors">
+              <Icon name="X" size={24} />
+            </button>
+            <h2 className="font-black text-2xl text-blue-900 mb-6" style={{ fontFamily: "'Montserrat', sans-serif" }}>Политика конфиденциальности</h2>
+            <div className="text-gray-600 text-sm leading-relaxed space-y-4">
+              <p><strong>1. Общие положения</strong><br />Настоящая политика конфиденциальности определяет порядок обработки информации о пользователях сайта Аквапарк «ГородОК» (г. Владивосток, ул. Ватутина, 4б).</p>
+              <p><strong>2. Какие данные мы собираем</strong><br />Мы можем собирать следующие данные: имя, номер телефона, текст сообщения, оставленные через форму обратной связи на сайте.</p>
+              <p><strong>3. Цели использования</strong><br />Данные используются исключительно для обратной связи с вами: ответа на вопросы, записи на занятия, бронирования услуг.</p>
+              <p><strong>4. Передача данных третьим лицам</strong><br />Мы не передаём ваши данные третьим лицам без вашего согласия, за исключением случаев, предусмотренных законодательством РФ.</p>
+              <p><strong>5. Безопасность</strong><br />Мы принимаем все необходимые меры для защиты ваших персональных данных от несанкционированного доступа.</p>
+              <p><strong>6. Контакты</strong><br />По вопросам конфиденциальности обращайтесь по телефону: 8 (914) 792-63-64.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: Обработка персональных данных */}
+      {showPersonal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4" onClick={() => setShowPersonal(false)}>
+          <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setShowPersonal(false)} className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 transition-colors">
+              <Icon name="X" size={24} />
+            </button>
+            <h2 className="font-black text-2xl text-blue-900 mb-6" style={{ fontFamily: "'Montserrat', sans-serif" }}>Обработка персональных данных</h2>
+            <div className="text-gray-600 text-sm leading-relaxed space-y-4">
+              <p><strong>1. Оператор данных</strong><br />Оператором персональных данных является Аквапарк «ГородОК», расположенный по адресу: г. Владивосток, ул. Ватутина, 4б.</p>
+              <p><strong>2. Правовое основание</strong><br />Обработка персональных данных осуществляется в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006.</p>
+              <p><strong>3. Состав персональных данных</strong><br />Обрабатываются следующие данные: фамилия, имя, номер телефона, содержание обращения.</p>
+              <p><strong>4. Способы обработки</strong><br />Сбор, запись, хранение, уточнение, использование, удаление персональных данных. Обработка осуществляется без передачи по сети Интернет третьим лицам.</p>
+              <p><strong>5. Срок хранения</strong><br />Персональные данные хранятся не дольше, чем этого требуют цели их обработки, и удаляются по достижении целей или по вашему запросу.</p>
+              <p><strong>6. Права субъекта данных</strong><br />Вы вправе запросить доступ к своим данным, их исправление или удаление, направив обращение на телефон: 8 (914) 792-63-64.</p>
+              <p><strong>7. Согласие</strong><br />Отправляя форму на сайте, вы даёте согласие на обработку своих персональных данных в указанных целях.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
