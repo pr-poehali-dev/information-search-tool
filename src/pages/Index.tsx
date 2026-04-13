@@ -376,13 +376,59 @@ export default function Index() {
           </div>
 
           {/* Расписание */}
-          <div className="rounded-3xl overflow-hidden shadow-2xl">
-            <img
-              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/d7949dcf-367f-4f57-a416-02bb4df6d7de.jpg"
-              alt="Расписание занятий"
-              className="w-full object-contain bg-[#d4eef5]"
-              style={{ maxHeight: 600 }}
-            />
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Взрослый аквафитнес */}
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 shadow-xl border border-blue-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="text-4xl">🏊‍♀️</div>
+                <h3 className="font-black text-2xl text-blue-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  Взрослый аквафитнес
+                </h3>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { day: "Понедельник", times: "18:45 и 19:30" },
+                  { day: "Вторник", times: "9:15" },
+                  { day: "Среда", times: "18:45 и 19:30" },
+                  { day: "Четверг", times: "9:15" },
+                  { day: "Суббота", times: "9:30" },
+                ].map((item) => (
+                  <div key={item.day} className="flex items-center justify-between bg-white rounded-2xl px-5 py-3 shadow-sm">
+                    <span className="font-semibold text-blue-900">{item.day}</span>
+                    <span className="text-blue-600 font-bold">{item.times}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Детское плавание */}
+            <div className="bg-gradient-to-br from-cyan-50 to-sky-50 rounded-3xl p-8 shadow-xl border border-cyan-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="text-4xl">🧒</div>
+                <h3 className="font-black text-2xl text-blue-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  Детское плавание
+                </h3>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { day: "Понедельник", times: "18:00" },
+                  { day: "Среда", times: "18:00" },
+                  { day: "Суббота", times: "8:45 и 10:15" },
+                ].map((item) => (
+                  <div key={item.day} className="flex items-center justify-between bg-white rounded-2xl px-5 py-3 shadow-sm">
+                    <span className="font-semibold text-blue-900">{item.day}</span>
+                    <span className="text-cyan-600 font-bold">{item.times}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 bg-white rounded-2xl p-5 shadow-sm border border-cyan-100">
+                <div className="text-sm text-gray-500 mb-1">Записаться к Светлане Вячеславовне</div>
+                <a href="tel:+79244296477" className="font-black text-lg text-blue-700 hover:text-blue-500 transition-colors" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  8 (924) 429-64-77
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
