@@ -464,35 +464,30 @@ export default function Index() {
                 У нас работают профессиональные вьетнамские мастера — настоящие эксперты своего дела. Массаж горячими камнями снимает напряжение, улучшает кровообращение и дарит глубокое расслабление после водных процедур.
               </p>
 
-              <div className="grid grid-cols-1 gap-3">
-                {[
-                  { icon: "🪨", title: "Горячие камни", desc: "Базальтовые камни прогревают мышцы и снимают зажимы" },
-                  { icon: "🌿", title: "Натуральные масла", desc: "Ароматические масла для кожи и полного расслабления" },
-                  { icon: "🇻🇳", title: "Вьетнамские мастера", desc: "Опытные специалисты с традиционными техниками массажа" },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-4 bg-rose-50 rounded-2xl p-4 border border-rose-100">
-                    <div className="text-3xl">{item.icon}</div>
-                    <div>
-                      <div className="font-bold text-gray-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>{item.title}</div>
-                      <div className="text-gray-500 text-sm mt-0.5">{item.desc}</div>
-                    </div>
+              <div className="grid grid-cols-1 gap-4">
+                <div className="bg-rose-50 rounded-2xl p-5 border border-rose-100">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-2xl">🇻🇳</span>
+                    <div className="font-bold text-gray-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>Фан — лечебный массаж</div>
                   </div>
-                ))}
-              </div>
+                  <div className="text-gray-500 text-sm mb-3">Магнитно-резонансная терапия · Лицензированный специалист</div>
+                  <a href="tel:+79247878088" className="flex items-center gap-2 text-rose-600 hover:text-rose-500 transition-colors font-bold">
+                    <Icon name="Phone" size={16} className="text-rose-500" />
+                    8 (924) 787-80-88
+                  </a>
+                </div>
 
-              <div className="bg-rose-50 rounded-2xl p-6 border border-rose-100">
-                <div className="text-sm text-gray-500 mb-2 font-medium">Записаться на массаж</div>
-                <a
-                  href="tel:+79147926364"
-                  className="flex items-center gap-3 text-rose-600 hover:text-rose-500 transition-colors"
-                >
-                  <div className="w-10 h-10 bg-rose-100 rounded-xl flex items-center justify-center">
-                    <Icon name="Phone" size={18} className="text-rose-500" />
+                <div className="bg-rose-50 rounded-2xl p-5 border border-rose-100">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-2xl">💆‍♀️</span>
+                    <div className="font-bold text-gray-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>Татьяна — расслабляющий и спортивный</div>
                   </div>
-                  <span className="font-black text-xl" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                    8 (914) 792-63-64
-                  </span>
-                </a>
+                  <div className="text-gray-500 text-sm mb-3">Снятие напряжения, восстановление после нагрузок</div>
+                  <a href="tel:+79242372678" className="flex items-center gap-2 text-rose-600 hover:text-rose-500 transition-colors font-bold">
+                    <Icon name="Phone" size={16} className="text-rose-500" />
+                    8 (924) 237-26-78
+                  </a>
+                </div>
               </div>
             </div>
           </div>
