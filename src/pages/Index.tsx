@@ -29,6 +29,7 @@ export default function Index() {
           <a href="#saunas" className="hover:text-yellow-300 transition-colors">Парилки</a>
           <a href="#private-saunas" className="hover:text-yellow-300 transition-colors">Сауны</a>
           <a href="#trainer" className="hover:text-yellow-300 transition-colors">Тренер</a>
+          <a href="#schedule" className="hover:text-yellow-300 transition-colors">Расписание</a>
           <a href="#tickets" className="hover:text-yellow-300 transition-colors">Билеты</a>
           <a href="#contacts" className="hover:text-yellow-300 transition-colors">Контакты</a>
           <a href="#feedback" className="hover:text-yellow-300 transition-colors">Связаться</a>
@@ -376,7 +377,7 @@ export default function Index() {
           </div>
 
           {/* Расписание */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div id="schedule" className="grid md:grid-cols-2 gap-8">
             {/* Взрослый аквафитнес */}
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 shadow-xl border border-blue-100">
               <div className="flex items-center gap-3 mb-6">
