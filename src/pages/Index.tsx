@@ -300,17 +300,35 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-600 to-pink-500 rounded-3xl p-8 md:p-10 text-center text-white shadow-2xl">
-            <div className="text-4xl mb-4">🎂</div>
-            <h3 className="font-black text-2xl md:text-3xl mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Отпразднуйте день рождения незабываемо!</h3>
-            <p className="text-white/80 text-lg mb-6">Забронируйте тематическую сауну для своего праздника — мы сделаем всё, чтобы было весело</p>
-            <a
-              href="tel:+79147926364"
-              className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full text-lg hover:scale-105 transition-transform shadow-lg"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              Забронировать: 8 (914) 792-63-64
-            </a>
+          <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative">
+              <img
+                src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/426dcce2-b59e-40ce-9529-a3e19cfa5cc4.jpg"
+                alt="Пенная вечеринка у бассейна"
+                className="w-full object-cover"
+                style={{ maxHeight: 400 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-white">
+                <div className="text-4xl mb-3">🎂</div>
+                <h3 className="font-black text-2xl md:text-3xl mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Отпразднуйте день рождения незабываемо!</h3>
+                <p className="text-white/85 text-base mb-5 max-w-2xl">
+                  Пенная вечеринка у бассейна, светомузыка и дым-машина для настоящего веселья! У нас всегда лето +30° и отличное настроение — мы сделаем ваш праздник ярким и незабываемым.
+                </p>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {["🫧 Пенная вечеринка", "🎵 Светомузыка", "💨 Дым-машина", "☀️ Всегда +30°"].map((t) => (
+                    <span key={t} className="bg-white/20 backdrop-blur text-white text-sm font-medium px-4 py-1.5 rounded-full border border-white/30">{t}</span>
+                  ))}
+                </div>
+                <a
+                  href="tel:+79147926364"
+                  className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full text-lg hover:scale-105 transition-transform shadow-lg"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  Забронировать: 8 (914) 792-63-64
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
