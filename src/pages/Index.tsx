@@ -252,7 +252,7 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-8 mb-14">
             {/* Пиратская */}
             <div className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
-              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/4b961ccf-ce27-4698-a34a-d2faeaf5112d.jpg)` }} />
+              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/5236c831-c7d6-4e52-bc05-850a234c1173.jpg)` }} />
               <div className="p-7">
                 <div className="text-4xl mb-3">🏴‍☠️</div>
                 <h3 className="font-black text-xl text-gray-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Пиратская</h3>
