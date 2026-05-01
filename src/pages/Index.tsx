@@ -287,16 +287,16 @@ export default function Index() {
                   onClick={() => setLightboxImg(PIRATE_IMAGES[pirateSlide])}
                 />
                 <button
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white shadow-lg rounded-full flex items-center justify-center transition-all hover:scale-110"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all"
                   onClick={(e) => { e.stopPropagation(); setPirateSlide((pirateSlide - 1 + PIRATE_IMAGES.length) % PIRATE_IMAGES.length); }}
                 >
-                  <Icon name="ChevronLeft" size={20} className="text-gray-800" />
+                  <Icon name="ChevronLeft" size={13} className="text-gray-700" />
                 </button>
                 <button
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white shadow-lg rounded-full flex items-center justify-center transition-all hover:scale-110"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all"
                   onClick={(e) => { e.stopPropagation(); setPirateSlide((pirateSlide + 1) % PIRATE_IMAGES.length); }}
                 >
-                  <Icon name="ChevronRight" size={20} className="text-gray-800" />
+                  <Icon name="ChevronRight" size={13} className="text-gray-700" />
                 </button>
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
                   {PIRATE_IMAGES.map((_, i) => (
@@ -848,6 +848,12 @@ export default function Index() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4"
           onClick={() => setLightboxImg(null)}
         >
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10"
+            onClick={(e) => { e.stopPropagation(); const prev = (pirateSlide - 1 + PIRATE_IMAGES.length) % PIRATE_IMAGES.length; setPirateSlide(prev); setLightboxImg(PIRATE_IMAGES[prev]); }}
+          >
+            <Icon name="ChevronLeft" size={28} className="text-white" />
+          </button>
           <div className="relative" style={{ maxHeight: "90vh", maxWidth: "90vw" }} onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setLightboxImg(null)}
@@ -861,7 +867,22 @@ export default function Index() {
               className="rounded-2xl object-contain"
               style={{ maxHeight: "90vh", maxWidth: "90vw" }}
             />
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {PIRATE_IMAGES.map((_, i) => (
+                <button
+                  key={i}
+                  className={`w-2 h-2 rounded-full transition-colors ${i === pirateSlide ? "bg-white" : "bg-white/40"}`}
+                  onClick={(e) => { e.stopPropagation(); setPirateSlide(i); setLightboxImg(PIRATE_IMAGES[i]); }}
+                />
+              ))}
+            </div>
           </div>
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10"
+            onClick={(e) => { e.stopPropagation(); const next = (pirateSlide + 1) % PIRATE_IMAGES.length; setPirateSlide(next); setLightboxImg(PIRATE_IMAGES[next]); }}
+          >
+            <Icon name="ChevronRight" size={28} className="text-white" />
+          </button>
         </div>
       )}
 
