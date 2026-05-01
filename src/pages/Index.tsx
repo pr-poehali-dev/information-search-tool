@@ -1,6 +1,11 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const LESHIY_MEDIA = [
+  { type: "image", src: "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a37cf560-2025-44f9-941b-d00f19dfc78a.jpg" },
+  { type: "video", src: "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/2a20baf8-31db-4d67-a133-ff49be3e1b4b.mp4" },
+];
+
 const SOLYANA_IMAGES = [
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/dfa1bdb9-828e-4b43-b6d1-0640e800152e.jpg",
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a4519624-37b2-4168-a9fd-055c8db8d003.jpg",
@@ -124,6 +129,8 @@ export default function Index() {
   const [goldenSlide, setGoldenSlide] = useState(0);
   const [hamamSlide, setHamamSlide] = useState(0);
   const [solyanSlide, setSolyanSlide] = useState(0);
+  const [leshiySlide, setLeshiySlide] = useState(0);
+  const [leshiyVideoModal, setLeshiyVideoModal] = useState(false);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -313,7 +320,35 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Леший */}
             <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:-translate-y-1 hover:scale-[1.01] transform duration-300">
-              <img src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a37cf560-2025-44f9-941b-d00f19dfc78a.jpg" alt="Банный комплекс Леший" className="w-full h-52 object-cover object-top" />
+              <div className="h-52 relative">
+                {LESHIY_MEDIA[leshiySlide].type === "image" ? (
+                  <img
+                    src={LESHIY_MEDIA[leshiySlide].src}
+                    alt="Леший"
+                    className="w-full h-full object-cover object-top cursor-pointer"
+                    onClick={() => openLightbox(LESHIY_MEDIA.filter(m => m.type === "image").map(m => m.src), 0)}
+                  />
+                ) : (
+                  <div className="relative w-full h-full cursor-pointer" onClick={() => setLeshiyVideoModal(true)}>
+                    <video src={LESHIY_MEDIA[leshiySlide].src} className="w-full h-full object-cover" muted autoPlay loop playsInline />
+                    <div className="absolute inset-0 bg-black/10 hover:bg-black/25 transition-colors" />
+                  </div>
+                )}
+                <button className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setLeshiySlide((leshiySlide - 1 + LESHIY_MEDIA.length) % LESHIY_MEDIA.length); }}>
+                  <Icon name="ChevronLeft" size={13} className="text-gray-700" />
+                </button>
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setLeshiySlide((leshiySlide + 1) % LESHIY_MEDIA.length); }}>
+                  <Icon name="ChevronRight" size={13} className="text-gray-700" />
+                </button>
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                  {LESHIY_MEDIA.map((m, i) => (
+                    <button key={i} className={`w-1.5 h-1.5 rounded-full transition-colors ${i === leshiySlide ? "bg-white" : "bg-white/50"}`} onClick={(e) => { e.stopPropagation(); setLeshiySlide(i); }} />
+                  ))}
+                </div>
+                {LESHIY_MEDIA[leshiySlide].type === "video" && (
+                  <div className="absolute top-2 right-2 bg-black/40 text-white text-xs px-2 py-0.5 rounded-full">▶ видео</div>
+                )}
+              </div>
               <div className="p-8">
                 <div className="text-5xl mb-5">🌲</div>
                 <h3 className="font-black text-2xl text-gray-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Леший</h3>
@@ -1094,6 +1129,18 @@ export default function Index() {
               <Icon name="ChevronRight" size={28} className="text-white" />
             </button>
           )}
+        </div>
+      )}
+
+      {/* MODAL: Видео Леший */}
+      {leshiyVideoModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4" onClick={() => setLeshiyVideoModal(false)}>
+          <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl" style={{ maxHeight: "90vh", maxWidth: "min(90vw, calc(90vh * 16/9))" }} onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setLeshiyVideoModal(false)} className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-colors">
+              <Icon name="X" size={18} className="text-white" />
+            </button>
+            <video src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/2a20baf8-31db-4d67-a133-ff49be3e1b4b.mp4" className="block" style={{ maxHeight: "90vh", maxWidth: "100%" }} autoPlay muted controls playsInline />
+          </div>
         </div>
       )}
 
