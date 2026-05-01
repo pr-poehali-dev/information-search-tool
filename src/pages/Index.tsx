@@ -18,6 +18,7 @@ const HAMAM_IMAGES = [
 
 const JAPAN_IMAGES = [
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/10f0bbc7-094d-46fe-bc80-7d682d50e46a.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/3ddbd453-783a-4870-be26-296291a18eee.jpg",
 ];
 
 const GOLDEN_IMAGES = [
