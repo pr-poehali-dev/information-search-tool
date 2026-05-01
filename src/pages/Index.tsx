@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const HAMAM_IMAGES = [
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/25e79593-4223-4a39-8034-d4c850866783.jpg",
+];
+
 const JAPAN_IMAGES = [
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/10f0bbc7-094d-46fe-bc80-7d682d50e46a.jpg",
 ];
@@ -112,6 +116,7 @@ export default function Index() {
   const [pirateSlide, setPirateSlide] = useState(0);
   const [japanSlide, setJapanSlide] = useState(0);
   const [goldenSlide, setGoldenSlide] = useState(0);
+  const [hamamSlide, setHamamSlide] = useState(0);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -319,7 +324,25 @@ export default function Index() {
 
             {/* Хамам */}
             <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:-translate-y-1 hover:scale-[1.01] transform duration-300">
-              <div className="h-3 bg-gradient-to-r from-blue-500 to-cyan-400" />
+              <div className="h-48 relative">
+                <img
+                  src={HAMAM_IMAGES[hamamSlide]}
+                  alt="Хамам"
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => openLightbox(HAMAM_IMAGES, hamamSlide)}
+                />
+                {HAMAM_IMAGES.length > 1 && <>
+                  <button className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setHamamSlide((hamamSlide - 1 + HAMAM_IMAGES.length) % HAMAM_IMAGES.length); }}>
+                    <Icon name="ChevronLeft" size={13} className="text-gray-700" />
+                  </button>
+                  <button className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setHamamSlide((hamamSlide + 1) % HAMAM_IMAGES.length); }}>
+                    <Icon name="ChevronRight" size={13} className="text-gray-700" />
+                  </button>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                    {HAMAM_IMAGES.map((_, i) => <button key={i} className={`w-1.5 h-1.5 rounded-full transition-colors ${i === hamamSlide ? "bg-white" : "bg-white/50"}`} onClick={(e) => { e.stopPropagation(); setHamamSlide(i); }} />)}
+                  </div>
+                </>}
+              </div>
               <div className="p-8">
                 <div className="text-5xl mb-5">🫧</div>
                 <h3 className="font-black text-2xl text-gray-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Хамам</h3>
