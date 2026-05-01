@@ -1,6 +1,12 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const SOLYANA_IMAGES = [
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/dfa1bdb9-828e-4b43-b6d1-0640e800152e.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a4519624-37b2-4168-a9fd-055c8db8d003.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/aa453ea6-3b8f-48dd-919e-f407d88e6eac.jpg",
+];
+
 const HAMAM_IMAGES = [
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/25e79593-4223-4a39-8034-d4c850866783.jpg",
 ];
@@ -117,6 +123,7 @@ export default function Index() {
   const [japanSlide, setJapanSlide] = useState(0);
   const [goldenSlide, setGoldenSlide] = useState(0);
   const [hamamSlide, setHamamSlide] = useState(0);
+  const [solyanSlide, setSolyanSlide] = useState(0);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -360,7 +367,23 @@ export default function Index() {
 
             {/* Соляная */}
             <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow hover:-translate-y-1 hover:scale-[1.01] transform duration-300">
-              <div className="h-3 bg-gradient-to-r from-amber-400 to-yellow-400" />
+              <div className="h-48 relative">
+                <img
+                  src={SOLYANA_IMAGES[solyanSlide]}
+                  alt="Соляная"
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => openLightbox(SOLYANA_IMAGES, solyanSlide)}
+                />
+                <button className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setSolyanSlide((solyanSlide - 1 + SOLYANA_IMAGES.length) % SOLYANA_IMAGES.length); }}>
+                  <Icon name="ChevronLeft" size={13} className="text-gray-700" />
+                </button>
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setSolyanSlide((solyanSlide + 1) % SOLYANA_IMAGES.length); }}>
+                  <Icon name="ChevronRight" size={13} className="text-gray-700" />
+                </button>
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                  {SOLYANA_IMAGES.map((_, i) => <button key={i} className={`w-1.5 h-1.5 rounded-full transition-colors ${i === solyanSlide ? "bg-white" : "bg-white/50"}`} onClick={(e) => { e.stopPropagation(); setSolyanSlide(i); }} />)}
+                </div>
+              </div>
               <div className="p-8">
                 <div className="text-5xl mb-5">🧂</div>
                 <h3 className="font-black text-2xl text-gray-900 mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>Соляная</h3>
