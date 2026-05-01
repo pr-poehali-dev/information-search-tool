@@ -1,6 +1,14 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const PIRATE_IMAGES = [
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/5236c831-c7d6-4e52-bc05-850a234c1173.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/954fdbab-5dc9-43ec-97d1-85d8f1ce992b.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/abb32394-88b8-4c0b-8c05-78e5aa87d1de.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/1d129c48-fec5-4811-986f-ee0fc5a82387.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/fdd20623-9ab0-47e9-ab0f-ef33007e5775.jpg",
+];
+
 const HERO_IMAGE =
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/99779861-cb5a-485a-b430-cc84ec62681b.jpg";
 
@@ -12,6 +20,8 @@ export default function Index() {
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showPersonal, setShowPersonal] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [pirateSlide, setPirateSlide] = useState(0);
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -269,7 +279,35 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-8 mb-14">
             {/* Пиратская */}
             <div className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
-              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/5236c831-c7d6-4e52-bc05-850a234c1173.jpg)` }} />
+              <div className="h-48 relative group">
+                <img
+                  src={PIRATE_IMAGES[pirateSlide]}
+                  alt="Пиратская сауна"
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => setLightboxImg(PIRATE_IMAGES[pirateSlide])}
+                />
+                <button
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors"
+                  onClick={(e) => { e.stopPropagation(); setPirateSlide((pirateSlide - 1 + PIRATE_IMAGES.length) % PIRATE_IMAGES.length); }}
+                >
+                  <Icon name="ChevronLeft" size={16} className="text-white" />
+                </button>
+                <button
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors"
+                  onClick={(e) => { e.stopPropagation(); setPirateSlide((pirateSlide + 1) % PIRATE_IMAGES.length); }}
+                >
+                  <Icon name="ChevronRight" size={16} className="text-white" />
+                </button>
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                  {PIRATE_IMAGES.map((_, i) => (
+                    <button
+                      key={i}
+                      className={`w-1.5 h-1.5 rounded-full transition-colors ${i === pirateSlide ? "bg-white" : "bg-white/50"}`}
+                      onClick={(e) => { e.stopPropagation(); setPirateSlide(i); }}
+                    />
+                  ))}
+                </div>
+              </div>
               <div className="p-7">
                 <div className="text-4xl mb-3">🏴‍☠️</div>
                 <h3 className="font-black text-xl text-gray-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Пиратская</h3>
@@ -803,6 +841,29 @@ export default function Index() {
         </div>
         <p className="text-blue-600 text-xs mt-4">© 2024 Аквапарк ГородОК. Все права защищены.</p>
       </footer>
+
+      {/* MODAL: Lightbox фото */}
+      {lightboxImg && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4"
+          onClick={() => setLightboxImg(null)}
+        >
+          <div className="relative" style={{ maxHeight: "90vh", maxWidth: "90vw" }} onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setLightboxImg(null)}
+              className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-colors"
+            >
+              <Icon name="X" size={18} className="text-white" />
+            </button>
+            <img
+              src={lightboxImg}
+              alt="Фото"
+              className="rounded-2xl object-contain"
+              style={{ maxHeight: "90vh", maxWidth: "90vw" }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* MODAL: Видео */}
       {showVideoModal && (
