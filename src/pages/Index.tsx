@@ -507,7 +507,6 @@ export default function Index() {
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 bg-[#2AABEE] hover:bg-[#1a9bde] text-white font-bold py-3 px-4 rounded-xl transition-colors"
                   >
-                    <span className="text-xl">✈️</span>
                     <span className="text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>Telegram</span>
                   </a>
                   <a
@@ -516,14 +515,12 @@ export default function Index() {
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1db954] text-white font-bold py-3 px-4 rounded-xl transition-colors"
                   >
-                    <span className="text-xl">💬</span>
                     <span className="text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>WhatsApp</span>
                   </a>
                   <a
                     href="tel:+79244296477"
                     className="flex-1 flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-xl transition-colors"
                   >
-                    <Icon name="Phone" size={16} className="text-gray-700" />
                     <span className="text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>Max</span>
                   </a>
                 </div>
