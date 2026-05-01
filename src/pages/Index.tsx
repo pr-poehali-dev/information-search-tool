@@ -287,16 +287,16 @@ export default function Index() {
                   onClick={() => setLightboxImg(PIRATE_IMAGES[pirateSlide])}
                 />
                 <button
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white shadow-lg rounded-full flex items-center justify-center transition-all hover:scale-110"
                   onClick={(e) => { e.stopPropagation(); setPirateSlide((pirateSlide - 1 + PIRATE_IMAGES.length) % PIRATE_IMAGES.length); }}
                 >
-                  <Icon name="ChevronLeft" size={16} className="text-white" />
+                  <Icon name="ChevronLeft" size={20} className="text-gray-800" />
                 </button>
                 <button
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white shadow-lg rounded-full flex items-center justify-center transition-all hover:scale-110"
                   onClick={(e) => { e.stopPropagation(); setPirateSlide((pirateSlide + 1) % PIRATE_IMAGES.length); }}
                 >
-                  <Icon name="ChevronRight" size={16} className="text-white" />
+                  <Icon name="ChevronRight" size={20} className="text-gray-800" />
                 </button>
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
                   {PIRATE_IMAGES.map((_, i) => (
