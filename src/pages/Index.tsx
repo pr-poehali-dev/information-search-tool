@@ -133,11 +133,7 @@ export default function Index() {
                   loop
                   playsInline
                 />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                  <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                    <Icon name="Play" size={28} className="text-blue-700 ml-1" />
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors" />
               </div>
             </div>
             <div className="space-y-8">
@@ -816,7 +812,7 @@ export default function Index() {
         >
           <div
             className="relative bg-black rounded-2xl overflow-hidden shadow-2xl"
-            style={{ maxHeight: "60vh", maxWidth: "min(60vw, calc(60vh * 9/16))" }}
+            style={{ maxHeight: "90vh", maxWidth: "min(90vw, calc(90vh * 9/16))" }}
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -828,7 +824,7 @@ export default function Index() {
             <video
               src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a0a41bf4-cfd9-46f1-b0ba-06ea7e48d285.mp4"
               className="block"
-              style={{ maxHeight: "60vh", width: "auto" }}
+              style={{ maxHeight: "90vh", width: "auto" }}
               autoPlay
               muted
               controls
