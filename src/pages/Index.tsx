@@ -45,6 +45,8 @@ const GALLERY_IMAGES = [
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/dda27fca-5a5f-49c2-a732-a1b761b5a406.jpg",
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/7efaf06d-4c9f-4f82-8513-4e6380cc4f7b.jpg",
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/7e84753a-54b1-42da-9cdb-b80f9c4118bd.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/d6e15057-7555-4471-958d-8eac9daa76e6.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/8139b19b-8997-4059-a081-6feb063799d1.jpg",
 ];
 
 function GalleryCarousel() {
