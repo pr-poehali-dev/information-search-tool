@@ -26,6 +26,9 @@ const HERO_IMAGE =
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/99779861-cb5a-485a-b430-cc84ec62681b.jpg";
 
 const GALLERY_IMAGES = [
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a92b0b8d-708c-41e0-943a-891eb3ec93e8.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/dda27fca-5a5f-49c2-a732-a1b761b5a406.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/7efaf06d-4c9f-4f82-8513-4e6380cc4f7b.jpg",
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/7e84753a-54b1-42da-9cdb-b80f9c4118bd.jpg",
 ];
 
