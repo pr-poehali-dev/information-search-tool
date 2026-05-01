@@ -25,6 +25,78 @@ const PIRATE_IMAGES = [
 const HERO_IMAGE =
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/99779861-cb5a-485a-b430-cc84ec62681b.jpg";
 
+const GALLERY_IMAGES = [
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/7e84753a-54b1-42da-9cdb-b80f9c4118bd.jpg",
+];
+
+function GalleryCarousel() {
+  const [slide, setSlide] = useState(0);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const prev = () => setSlide((s) => (s - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+  const next = () => setSlide((s) => (s + 1) % GALLERY_IMAGES.length);
+  const lbPrev = () => setLightbox((i) => i !== null ? (i - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length : null);
+  const lbNext = () => setLightbox((i) => i !== null ? (i + 1) % GALLERY_IMAGES.length : null);
+
+  return (
+    <>
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl" style={{ height: 420 }}>
+        <img
+          src={GALLERY_IMAGES[slide]}
+          alt={`Фото ${slide + 1}`}
+          className="w-full h-full object-cover cursor-pointer"
+          onClick={() => setLightbox(slide)}
+        />
+        {GALLERY_IMAGES.length > 1 && (
+          <>
+            <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white shadow-lg rounded-full flex items-center justify-center transition-all hover:scale-110">
+              <Icon name="ChevronLeft" size={20} className="text-gray-800" />
+            </button>
+            <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white shadow-lg rounded-full flex items-center justify-center transition-all hover:scale-110">
+              <Icon name="ChevronRight" size={20} className="text-gray-800" />
+            </button>
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {GALLERY_IMAGES.map((_, i) => (
+                <button key={i} onClick={() => setSlide(i)} className={`w-2 h-2 rounded-full transition-colors ${i === slide ? "bg-white" : "bg-white/50"}`} />
+              ))}
+            </div>
+          </>
+        )}
+        <div className="absolute bottom-3 right-4 bg-black/40 text-white text-xs px-3 py-1 rounded-full">
+          {slide + 1} / {GALLERY_IMAGES.length}
+        </div>
+      </div>
+
+      {lightbox !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4" onClick={() => setLightbox(null)}>
+          {GALLERY_IMAGES.length > 1 && (
+            <button className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10" onClick={(e) => { e.stopPropagation(); lbPrev(); }}>
+              <Icon name="ChevronLeft" size={28} className="text-white" />
+            </button>
+          )}
+          <div className="relative" style={{ maxHeight: "90vh", maxWidth: "90vw" }} onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setLightbox(null)} className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center">
+              <Icon name="X" size={18} className="text-white" />
+            </button>
+            <img src={GALLERY_IMAGES[lightbox]} alt="Фото" className="rounded-2xl object-contain" style={{ maxHeight: "90vh", maxWidth: "90vw" }} />
+            {GALLERY_IMAGES.length > 1 && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {GALLERY_IMAGES.map((_, i) => (
+                  <button key={i} onClick={(e) => { e.stopPropagation(); setLightbox(i); }} className={`w-2 h-2 rounded-full transition-colors ${i === lightbox ? "bg-white" : "bg-white/40"}`} />
+                ))}
+              </div>
+            )}
+          </div>
+          {GALLERY_IMAGES.length > 1 && (
+            <button className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10" onClick={(e) => { e.stopPropagation(); lbNext(); }}>
+              <Icon name="ChevronRight" size={28} className="text-white" />
+            </button>
+          )}
+        </div>
+      )}
+    </>
+  );
+}
+
 export default function Index() {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [agreed, setAgreed] = useState(false);
@@ -279,13 +351,13 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Ледяная купель баннер */}
-          <div className="mt-14 rounded-3xl overflow-hidden shadow-2xl relative">
-            <img
-              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/7e84753a-54b1-42da-9cdb-b80f9c4118bd.jpg"
-              alt="Ледяная купель Городок"
-              className="w-full h-72 md:h-96 object-cover object-center"
-            />
+          {/* Галерея комплекса */}
+          <div className="mt-14">
+            <div className="text-center mb-8">
+              <h3 className="font-black text-2xl md:text-3xl text-gray-900" style={{ fontFamily: "'Montserrat', sans-serif" }}>Фото комплекса</h3>
+              <div className="w-12 h-1 bg-yellow-400 rounded-full mx-auto mt-3" />
+            </div>
+            <GalleryCarousel />
           </div>
         </div>
       </section>
