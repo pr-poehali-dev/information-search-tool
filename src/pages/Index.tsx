@@ -326,7 +326,7 @@ export default function Index() {
                     src={LESHIY_MEDIA[leshiySlide].src}
                     alt="Леший"
                     className="w-full h-full object-cover object-top cursor-pointer"
-                    onClick={() => openLightbox(LESHIY_MEDIA.filter(m => m.type === "image").map(m => m.src), 0)}
+                    onClick={() => setLeshiyVideoModal(true)}
                   />
                 ) : (
                   <div className="relative w-full h-full cursor-pointer" onClick={() => setLeshiyVideoModal(true)}>
@@ -1132,15 +1132,30 @@ export default function Index() {
         </div>
       )}
 
-      {/* MODAL: Видео Леший */}
+      {/* MODAL: Леший — фото и видео со стрелками */}
       {leshiyVideoModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4" onClick={() => setLeshiyVideoModal(false)}>
-          <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl" style={{ maxHeight: "90vh", maxWidth: "min(90vw, calc(90vh * 16/9))" }} onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4" onClick={() => setLeshiyVideoModal(false)}>
+          <button className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10" onClick={(e) => { e.stopPropagation(); setLeshiySlide((leshiySlide - 1 + LESHIY_MEDIA.length) % LESHIY_MEDIA.length); }}>
+            <Icon name="ChevronLeft" size={28} className="text-white" />
+          </button>
+          <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl" style={{ maxHeight: "90vh", maxWidth: "90vw" }} onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setLeshiyVideoModal(false)} className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-colors">
               <Icon name="X" size={18} className="text-white" />
             </button>
-            <video src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/2a20baf8-31db-4d67-a133-ff49be3e1b4b.mp4" className="block" style={{ maxHeight: "90vh", maxWidth: "100%" }} autoPlay muted controls playsInline />
+            {LESHIY_MEDIA[leshiySlide].type === "image" ? (
+              <img src={LESHIY_MEDIA[leshiySlide].src} alt="Леший" className="block object-contain rounded-2xl" style={{ maxHeight: "90vh", maxWidth: "90vw" }} />
+            ) : (
+              <video src={LESHIY_MEDIA[leshiySlide].src} className="block" style={{ maxHeight: "90vh", maxWidth: "90vw" }} autoPlay muted controls playsInline />
+            )}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {LESHIY_MEDIA.map((m, i) => (
+                <button key={i} onClick={(e) => { e.stopPropagation(); setLeshiySlide(i); }} className={`w-2 h-2 rounded-full transition-colors ${i === leshiySlide ? "bg-white" : "bg-white/40"}`} />
+              ))}
+            </div>
           </div>
+          <button className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10" onClick={(e) => { e.stopPropagation(); setLeshiySlide((leshiySlide + 1) % LESHIY_MEDIA.length); }}>
+            <Icon name="ChevronRight" size={28} className="text-white" />
+          </button>
         </div>
       )}
 
