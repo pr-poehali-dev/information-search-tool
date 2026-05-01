@@ -28,6 +28,7 @@ export default function Index() {
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showPersonal, setShowPersonal] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [showTrainerVideo, setShowTrainerVideo] = useState(false);
   const [pirateSlide, setPirateSlide] = useState(0);
   const [japanSlide, setJapanSlide] = useState(0);
   const [goldenSlide, setGoldenSlide] = useState(0);
@@ -453,12 +454,21 @@ export default function Index() {
 
           {/* Фото команды + описание */}
           <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
-            <div className="rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/f5511695-e2eb-42fc-a933-6d3b01262330.jpg"
-                alt="Команда аквапарка ГородОК"
+            <div
+              className="rounded-3xl overflow-hidden shadow-2xl relative cursor-pointer group"
+              style={{ minHeight: 320 }}
+              onClick={() => setShowTrainerVideo(true)}
+            >
+              <video
+                src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/6c715da7-e8bf-4532-ac56-b37fb1473972.mp4"
                 className="w-full h-full object-cover"
+                style={{ minHeight: 320 }}
+                muted
+                autoPlay
+                loop
+                playsInline
               />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors" />
             </div>
 
             <div className="space-y-6">
@@ -945,6 +955,36 @@ export default function Index() {
               <Icon name="ChevronRight" size={28} className="text-white" />
             </button>
           )}
+        </div>
+      )}
+
+      {/* MODAL: Видео тренера */}
+      {showTrainerVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4"
+          onClick={() => setShowTrainerVideo(false)}
+        >
+          <div
+            className="relative bg-black rounded-2xl overflow-hidden shadow-2xl"
+            style={{ maxHeight: "90vh", maxWidth: "min(90vw, calc(90vh * 9/16))" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowTrainerVideo(false)}
+              className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-colors"
+            >
+              <Icon name="X" size={18} className="text-white" />
+            </button>
+            <video
+              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/6c715da7-e8bf-4532-ac56-b37fb1473972.mp4"
+              className="block"
+              style={{ maxHeight: "90vh", width: "auto" }}
+              autoPlay
+              muted
+              controls
+              playsInline
+            />
+          </div>
         </div>
       )}
 
