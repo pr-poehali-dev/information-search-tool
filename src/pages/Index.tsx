@@ -237,7 +237,7 @@ export default function Index() {
                 onClick={() => setShowVideoModal(true)}
               >
                 <video
-                  src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a0a41bf4-cfd9-46f1-b0ba-06ea7e48d285.mp4"
+                  src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/57ac452b-0287-4e48-ba88-b760d4e6f5f1.MOV"
                   className="w-full h-full object-cover"
                   muted
                   autoPlay
@@ -1099,7 +1099,7 @@ export default function Index() {
               <Icon name="X" size={18} className="text-white" />
             </button>
             <video
-              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a0a41bf4-cfd9-46f1-b0ba-06ea7e48d285.mp4"
+              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/57ac452b-0287-4e48-ba88-b760d4e6f5f1.MOV"
               className="block"
               style={{ maxHeight: "90vh", width: "auto" }}
               autoPlay
