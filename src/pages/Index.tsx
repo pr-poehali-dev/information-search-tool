@@ -1,6 +1,14 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const JAPAN_IMAGES = [
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/10f0bbc7-094d-46fe-bc80-7d682d50e46a.jpg",
+];
+
+const GOLDEN_IMAGES = [
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/4b961ccf-ce27-4698-a34a-d2faeaf5112d.jpg",
+];
+
 const PIRATE_IMAGES = [
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/5236c831-c7d6-4e52-bc05-850a234c1173.jpg",
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/954fdbab-5dc9-43ec-97d1-85d8f1ce992b.jpg",
@@ -21,7 +29,19 @@ export default function Index() {
   const [showPersonal, setShowPersonal] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [pirateSlide, setPirateSlide] = useState(0);
+  const [japanSlide, setJapanSlide] = useState(0);
+  const [goldenSlide, setGoldenSlide] = useState(0);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (images: string[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxImg(images[index]);
+  };
+  const lightboxPrev = () => { const i = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length; setLightboxIndex(i); setLightboxImg(lightboxImages[i]); };
+  const lightboxNext = () => { const i = (lightboxIndex + 1) % lightboxImages.length; setLightboxIndex(i); setLightboxImg(lightboxImages[i]); };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -284,7 +304,7 @@ export default function Index() {
                   src={PIRATE_IMAGES[pirateSlide]}
                   alt="Пиратская сауна"
                   className="w-full h-full object-cover cursor-pointer"
-                  onClick={() => setLightboxImg(PIRATE_IMAGES[pirateSlide])}
+                  onClick={() => openLightbox(PIRATE_IMAGES, pirateSlide)}
                 />
                 <button
                   className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all"
@@ -322,7 +342,25 @@ export default function Index() {
 
             {/* Японская */}
             <div className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
-              <div className="h-48 bg-cover bg-center bg-[center_40%]" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/10f0bbc7-094d-46fe-bc80-7d682d50e46a.jpg)` }} />
+              <div className="h-48 relative">
+                <img
+                  src={JAPAN_IMAGES[japanSlide]}
+                  alt="Японская сауна"
+                  className="w-full h-full object-cover object-[center_40%] cursor-pointer"
+                  onClick={() => openLightbox(JAPAN_IMAGES, japanSlide)}
+                />
+                {JAPAN_IMAGES.length > 1 && <>
+                  <button className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setJapanSlide((japanSlide - 1 + JAPAN_IMAGES.length) % JAPAN_IMAGES.length); }}>
+                    <Icon name="ChevronLeft" size={13} className="text-gray-700" />
+                  </button>
+                  <button className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setJapanSlide((japanSlide + 1) % JAPAN_IMAGES.length); }}>
+                    <Icon name="ChevronRight" size={13} className="text-gray-700" />
+                  </button>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                    {JAPAN_IMAGES.map((_, i) => <button key={i} className={`w-1.5 h-1.5 rounded-full transition-colors ${i === japanSlide ? "bg-white" : "bg-white/50"}`} onClick={(e) => { e.stopPropagation(); setJapanSlide(i); }} />)}
+                  </div>
+                </>}
+              </div>
               <div className="p-7">
                 <div className="text-4xl mb-3">⛩️</div>
                 <h3 className="font-black text-xl text-gray-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Японская</h3>
@@ -337,7 +375,25 @@ export default function Index() {
 
             {/* Золотая Азия */}
             <div className="rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
-              <div className="h-48 bg-cover bg-center bg-[center_70%]" style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/4b961ccf-ce27-4698-a34a-d2faeaf5112d.jpg)` }} />
+              <div className="h-48 relative">
+                <img
+                  src={GOLDEN_IMAGES[goldenSlide]}
+                  alt="Золотая Азия"
+                  className="w-full h-full object-cover object-[center_70%] cursor-pointer"
+                  onClick={() => openLightbox(GOLDEN_IMAGES, goldenSlide)}
+                />
+                {GOLDEN_IMAGES.length > 1 && <>
+                  <button className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setGoldenSlide((goldenSlide - 1 + GOLDEN_IMAGES.length) % GOLDEN_IMAGES.length); }}>
+                    <Icon name="ChevronLeft" size={13} className="text-gray-700" />
+                  </button>
+                  <button className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 bg-white/80 hover:bg-white shadow rounded-full flex items-center justify-center transition-all" onClick={(e) => { e.stopPropagation(); setGoldenSlide((goldenSlide + 1) % GOLDEN_IMAGES.length); }}>
+                    <Icon name="ChevronRight" size={13} className="text-gray-700" />
+                  </button>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                    {GOLDEN_IMAGES.map((_, i) => <button key={i} className={`w-1.5 h-1.5 rounded-full transition-colors ${i === goldenSlide ? "bg-white" : "bg-white/50"}`} onClick={(e) => { e.stopPropagation(); setGoldenSlide(i); }} />)}
+                  </div>
+                </>}
+              </div>
               <div className="p-7">
                 <div className="text-4xl mb-3">🏮</div>
                 <h3 className="font-black text-xl text-gray-900 mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Золотая Азия</h3>
@@ -848,12 +904,14 @@ export default function Index() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4"
           onClick={() => setLightboxImg(null)}
         >
-          <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10"
-            onClick={(e) => { e.stopPropagation(); const prev = (pirateSlide - 1 + PIRATE_IMAGES.length) % PIRATE_IMAGES.length; setPirateSlide(prev); setLightboxImg(PIRATE_IMAGES[prev]); }}
-          >
-            <Icon name="ChevronLeft" size={28} className="text-white" />
-          </button>
+          {lightboxImages.length > 1 && (
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10"
+              onClick={(e) => { e.stopPropagation(); lightboxPrev(); }}
+            >
+              <Icon name="ChevronLeft" size={28} className="text-white" />
+            </button>
+          )}
           <div className="relative" style={{ maxHeight: "90vh", maxWidth: "90vw" }} onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setLightboxImg(null)}
@@ -867,22 +925,26 @@ export default function Index() {
               className="rounded-2xl object-contain"
               style={{ maxHeight: "90vh", maxWidth: "90vw" }}
             />
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-              {PIRATE_IMAGES.map((_, i) => (
-                <button
-                  key={i}
-                  className={`w-2 h-2 rounded-full transition-colors ${i === pirateSlide ? "bg-white" : "bg-white/40"}`}
-                  onClick={(e) => { e.stopPropagation(); setPirateSlide(i); setLightboxImg(PIRATE_IMAGES[i]); }}
-                />
-              ))}
-            </div>
+            {lightboxImages.length > 1 && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {lightboxImages.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`w-2 h-2 rounded-full transition-colors ${i === lightboxIndex ? "bg-white" : "bg-white/40"}`}
+                    onClick={(e) => { e.stopPropagation(); setLightboxIndex(i); setLightboxImg(lightboxImages[i]); }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
-          <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10"
-            onClick={(e) => { e.stopPropagation(); const next = (pirateSlide + 1) % PIRATE_IMAGES.length; setPirateSlide(next); setLightboxImg(PIRATE_IMAGES[next]); }}
-          >
-            <Icon name="ChevronRight" size={28} className="text-white" />
-          </button>
+          {lightboxImages.length > 1 && (
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition-all z-10"
+              onClick={(e) => { e.stopPropagation(); lightboxNext(); }}
+            >
+              <Icon name="ChevronRight" size={28} className="text-white" />
+            </button>
+          )}
         </div>
       )}
 
