@@ -7,6 +7,11 @@ const JAPAN_IMAGES = [
 
 const GOLDEN_IMAGES = [
   "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/files/4b961ccf-ce27-4698-a34a-d2faeaf5112d.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/cfb85aad-47af-4f2b-b00a-9da0adb5d061.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/60e6a55a-cd24-4a03-99e8-70a0a898fb0e.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/cdb503e8-499e-4270-8246-e822c0f2b51e.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/9b1a358d-ae7e-4f42-8dcf-2c3aed4f46a4.jpg",
+  "https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/031ec82c-0b4a-454e-89a1-991dd579eee1.jpg",
 ];
 
 const PIRATE_IMAGES = [
