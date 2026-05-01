@@ -11,6 +11,7 @@ export default function Index() {
   const [loading, setLoading] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showPersonal, setShowPersonal] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,8 +120,24 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="rounded-3xl overflow-hidden shadow-2xl" style={{ height: 380 }}>
-                <img src={HERO_IMAGE} alt="Аквапарк" className="w-full h-full object-cover" />
+              <div
+                className="rounded-3xl overflow-hidden shadow-2xl relative cursor-pointer group"
+                style={{ height: 380 }}
+                onClick={() => setShowVideoModal(true)}
+              >
+                <video
+                  src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a0a41bf4-cfd9-46f1-b0ba-06ea7e48d285.mp4"
+                  className="w-full h-full object-cover"
+                  muted
+                  autoPlay
+                  loop
+                  playsInline
+                />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                  <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                    <Icon name="Play" size={28} className="text-blue-700 ml-1" />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="space-y-8">
@@ -790,6 +807,36 @@ export default function Index() {
         </div>
         <p className="text-blue-600 text-xs mt-4">© 2024 Аквапарк ГородОК. Все права защищены.</p>
       </footer>
+
+      {/* MODAL: Видео */}
+      {showVideoModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4"
+          onClick={() => setShowVideoModal(false)}
+        >
+          <div
+            className="relative bg-black rounded-2xl overflow-hidden shadow-2xl"
+            style={{ maxHeight: "60vh", maxWidth: "min(60vw, calc(60vh * 9/16))" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowVideoModal(false)}
+              className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center transition-colors"
+            >
+              <Icon name="X" size={18} className="text-white" />
+            </button>
+            <video
+              src="https://cdn.poehali.dev/projects/99f157bb-932d-4e14-b01a-398ebe020b15/bucket/a0a41bf4-cfd9-46f1-b0ba-06ea7e48d285.mp4"
+              className="block"
+              style={{ maxHeight: "60vh", width: "auto" }}
+              autoPlay
+              muted
+              controls
+              playsInline
+            />
+          </div>
+        </div>
+      )}
 
       {/* MODAL: Политика конфиденциальности */}
       {showPrivacy && (
