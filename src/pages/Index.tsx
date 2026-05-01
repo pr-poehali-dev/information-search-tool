@@ -499,18 +499,34 @@ export default function Index() {
               </div>
 
               <div className="bg-white rounded-2xl p-6 shadow-md border border-blue-100">
-                <div className="text-sm text-gray-500 mb-2 font-medium">Записаться к тренеру</div>
-                <a
-                  href="tel:+79244296477"
-                  className="flex items-center gap-3 text-blue-700 hover:text-blue-500 transition-colors"
-                >
-                  <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-                    <Icon name="Phone" size={18} className="text-blue-600" />
-                  </div>
-                  <span className="font-black text-xl" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                    8 (924) 429-64-77
-                  </span>
-                </a>
+                <div className="text-sm text-gray-500 mb-4 font-medium">Записаться к тренеру</div>
+                <div className="flex gap-3">
+                  <a
+                    href="https://t.me/+79244296477"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 bg-[#2AABEE] hover:bg-[#1a9bde] text-white font-bold py-3 px-4 rounded-xl transition-colors"
+                  >
+                    <span className="text-xl">✈️</span>
+                    <span className="text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>Telegram</span>
+                  </a>
+                  <a
+                    href="https://wa.me/79244296477"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1db954] text-white font-bold py-3 px-4 rounded-xl transition-colors"
+                  >
+                    <span className="text-xl">💬</span>
+                    <span className="text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>WhatsApp</span>
+                  </a>
+                  <a
+                    href="tel:+79244296477"
+                    className="flex-1 flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-xl transition-colors"
+                  >
+                    <Icon name="Phone" size={16} className="text-gray-700" />
+                    <span className="text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>Max</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
